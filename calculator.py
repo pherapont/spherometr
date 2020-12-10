@@ -19,11 +19,27 @@ def convex_height(radius: float, kind: str, ring: str) -> float:
     sqr_diff = sqrt(tmp_sum**2 - spher["radius"]**2)
     return round(tmp_sum - sqr_diff, 3)
 
+def concave_radius(height: float, kind:str, ring:str) -> float:
+    spher = SPHEROMETR[kind][ring]
+    first_term = spher["radius"]**2 / 2 / height
+    second_term = height / 2
+    return round(first_term + second_term + spher["ball"], 1)
+
+def convex_radius(height: float, kind:str, ring:str) -> float:
+    spher = SPHEROMETR[kind][ring]
+    first_term = spher["radius"]**2 / 2 / height
+    second_term = height / 2
+    return round(first_term + second_term - spher["ball"], 1)
+
 if __name__ == "__main__":
     spher = "BIG"
     ring = "RING_1"
     print(SPHEROMETR[spher][ring]["ball"])
     height_1 = convex_height(100, "SMALL", "RING_4")
     height_2 = concave_height(100, "SMALL", "RING_4")
-    print(height_1)
-    print(height_2)
+    radius_1 = concave_radius(0.135, "SMALL", "RING_7")
+    radius_2 = convex_radius(0.135, "SMALL", "RING_7")
+    print("height_1", height_1)
+    print("height_2", height_2)
+    print("radius_1", radius_1)
+    print("radius_2", radius_2)

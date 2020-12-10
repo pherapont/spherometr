@@ -8,24 +8,36 @@ from data import SPHEROMETR
 
 
 def concave_height(radius: float, kind: str, ring: str) -> float:
+    """ The function for calculation height of concave
+        surface optical detail """
+
     spher = SPHEROMETR[kind][ring]
     diff = radius - spher["ball"]
     sqr_diff = sqrt(diff**2 - spher["radius"]**2)
     return round(diff - sqr_diff, 3)
 
 def convex_height(radius: float, kind: str, ring: str) -> float:
+    """ The function for calculation height of convex
+        surface optical detail """
+
     spher = SPHEROMETR[kind][ring]
     tmp_sum = radius + spher["ball"]
     sqr_diff = sqrt(tmp_sum**2 - spher["radius"]**2)
     return round(tmp_sum - sqr_diff, 3)
 
 def concave_radius(height: float, kind:str, ring:str) -> float:
+    """ The function for calculation radius of concave
+        surface optical detail """
+
     spher = SPHEROMETR[kind][ring]
     first_term = spher["radius"]**2 / 2 / height
     second_term = height / 2
     return round(first_term + second_term + spher["ball"], 1)
 
 def convex_radius(height: float, kind:str, ring:str) -> float:
+    """ The function for calculation radius of convex
+        surface optical detail """
+
     spher = SPHEROMETR[kind][ring]
     first_term = spher["radius"]**2 / 2 / height
     second_term = height / 2
@@ -42,4 +54,4 @@ if __name__ == "__main__":
     print("height_1", height_1)
     print("height_2", height_2)
     print("radius_1", radius_1)
-    print("radius_2", radius_2)
+    print("radius_3", radius_2)

@@ -39,6 +39,7 @@ def convex_radius(height: float, kind:str, ring:str) -> float:
         surface optical detail """
 
     spher = SPHEROMETR[kind][ring]
+    print(height, type(height))
     first_term = spher["radius"]**2 / 2 / height
     second_term = height / 2
     return round(first_term + second_term - spher["ball"], 1)

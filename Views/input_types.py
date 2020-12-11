@@ -1,9 +1,3 @@
-def print_header() -> None:
-    print("")
-    header = "Расчет параметров оптической детали"
-    print("{0:-^70}\n".format(header))
-
-
 def get_calculations_type() -> str:
     """ Function for input from user type of calculations """
 
@@ -29,35 +23,6 @@ def get_surface_type() -> str:
         surface_type = input("  1 --- 2\n  ")
     return surface_type
 
-
-def get_surface_radius() -> float:
-    """ Function for input from user radius of surface """
-
-    print("  Введите радиус поверхности( дробная часть отделяется точкой")
-    print("  Пример: 1.001")
-    radius = input("  ")
-    try:
-        radius = float(radius)
-    except:
-        print("  Введите правильные данные")
-    return radius
-
-
-def get_surface_height() -> float:
-    """ Function for input from user height of surface """
-
-    print("  Введите высоту поверхности:")
-    print("  (разность между показаниями сферометра на детали и эталонной\
-        плоскости)")
-    print("  (дробная часть отделяется точкой)")
-    print("  Пример: 1.001")
-    height = input("  ")
-    try:
-        height = float(radius)
-    except:
-        print("  Введите правильные данные")
-    return height
-
 def get_spher_type() -> str:
     """ Function for input from user type of spherometr """
 
@@ -80,18 +45,3 @@ def get_ring_type() -> str:
         print("  Введите правильный номер кольца")
         ring_type = input("  1 --- 7\n  ")
     return ring_type
-
-def check_response(calc_type: str, surface_type: str,
-    surface_radius: float, spher_type: str, ring_type: str) -> None:
-    """ The function that output data for checking by user """
-
-    print("\n  Проверка введеных данных:")
-    calc_type_resp = "стрелку" if calc_type == "1" else "радиус"
-    print("  Вычисляем {} поверхности.".format(calc_type_resp))
-    surface_type_resp = "вогнутая" if surface_type == "1" else "выпуклая"
-    print("  Поверхность {}".format(surface_type_resp))
-    print("  Радиус поверхности: {}мм".format(surface_radius))
-    spher_type_response = ("Сферометр малый" if spher_type == "1"
-        else "Сферометр большой")
-    print("  {}".format(spher_type_response))
-    print("  Номер кольца {}\n".format(ring_type))

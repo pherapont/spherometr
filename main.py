@@ -22,21 +22,22 @@ kind = SPHER_TYPE[spher_type]
 ring = RING_TYPE[ring_type]
 
 if calculation_type == "1":
-    surface_radius = get_surface_radius()
-    check_response(calculation_type,
-        surface_type, surface_radius, spher_type, ring_type)
-    if surface_type == "1":
-        res = concave_height(surface_radius, kind, ring)
-    elif surface_type == "2":
-        res = convex_height(surface_radius, kind, ring)
-
+    surface_param = get_surface_radius()
 elif calculation_type == "2":
-    surface_height = get_surface_height()
-    check_response(calculation_type,
-        surface_type, surface_height, spher_type, ring_type)
+    surface_param = get_surface_height()
+
+check_response(calculation_type,
+    surface_type, surface_param, spher_type, ring_type)
+
+if calculation_type == "1":
     if surface_type == "1":
-        res = concave_radius(surface_height, kind, ring)
+        res = concave_height(surface_param, kind, ring)
     elif surface_type == "2":
-        res = convex_radius(surface_height, kind, ring)
+        res = convex_height(surface_param, kind, ring)
+elif calculation_type == "2":
+    if surface_type == "1":
+        res = concave_radius(surface_param, kind, ring)
+    elif surface_type == "2":
+        res = convex_radius(surface_param, kind, ring)
 
 result_response(res)

@@ -6,9 +6,9 @@ from Views.input_types import get_calculations_type, get_surface_type
 from Views.input_types import get_spher_type, get_ring_type
 from Views.input_parametrs import get_surface_radius, get_surface_height
 from Views.responses import check_response, result_response
-from calculator import concave_height, convex_height
-from calculator import concave_radius, convex_radius
-from user_input_handler import SPHER_TYPE, RING_TYPE
+from Controller.calculator import concave_height, convex_height
+from Controller.calculator import concave_radius, convex_radius
+from Model.user_input_handler import SPHER_TYPE, RING_TYPE
 
 
 print_header()

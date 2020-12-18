@@ -6,9 +6,12 @@ from Views.input_types import get_calculations_type, get_surface_type
 from Views.input_types import get_spher_type, get_ring_type
 from Views.input_parametrs import get_surface_radius, get_surface_height
 from Views.responses import check_response, result_response
+from Views.warnings import radius_warning
 from Controller.calculator import concave_height, convex_height
 from Controller.calculator import concave_radius, convex_radius
+from Controller.check_rings_input import check_ring_radius
 from Model.user_input_handler import SPHER_TYPE, RING_TYPE
+from Model.data import SPHEROMETR
 
 
 print_header()
@@ -23,6 +26,9 @@ ring = RING_TYPE[ring_type]
 
 if calculation_type == "1":
     surface_param = get_surface_radius()
+    ring_radius = SPHEROMETR[kind][ring]["radius"]
+    while check_ring_radius(ring_radius, surface_param):
+        radius_warning(kind, ring)
 elif calculation_type == "2":
     surface_param = get_surface_height()
 

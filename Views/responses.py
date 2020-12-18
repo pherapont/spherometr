@@ -1,5 +1,5 @@
 def check_response(calc_type: str, surface_type: str,
-    surface_radius: float, spher_type: str, ring_type: str) -> None:
+    surface_param: float, spher_type: str, ring_type: str) -> None:
 
     """ The function that output data for checking by user """
 
@@ -11,7 +11,10 @@ def check_response(calc_type: str, surface_type: str,
     surface_type_resp = "вогнутая" if surface_type == "1" else "выпуклая"
     print("  Поверхность {}".format(surface_type_resp))
 
-    print("  Радиус поверхности: {}мм".format(surface_radius))
+    if calc_type == "1":
+        print("  Радиус поверхности: {}мм".format(surface_param))
+    elif calc_type == "2":
+        print("  Высота поверхности: {}мм".format(surface_param))
 
     spher_type_response = ("Сферометр малый" if spher_type == "1"
         else "Сферометр большой")

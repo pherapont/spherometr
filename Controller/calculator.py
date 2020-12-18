@@ -4,7 +4,7 @@
 
 from math import sqrt
 
-from data import SPHEROMETR
+from Model.data import SPHEROMETR
 
 
 def concave_height(radius: float, kind: str, ring: str) -> float:

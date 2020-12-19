@@ -1,5 +1,7 @@
-def check_ring_radius(ring_radius: float, radius: float) -> bool:
-    """ Fanction for checking is the spherometr ring too large
+INDENT_FROM_THE_EDGE = 5
+
+def check_ring(ring_radius: float, radius: float) -> bool:
+    """ Function for checking is the spherometr ring too large
         for mesarment"""
-        
-    return ring_radius > radius + 5
+
+    return ring_radius + INDENT_FROM_THE_EDGE > radius

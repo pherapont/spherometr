@@ -1,3 +1,8 @@
+from pprint import pprint
+
+from Model.data import SPHEROMETR
+
+
 def get_calculations_type() -> str:
     """ Function for input from user type of calculations """
 
@@ -35,13 +40,19 @@ def get_spher_type() -> str:
         spher_type = input("  1 --- 2\n  ")
     return spher_type
 
-def get_ring_type() -> str:
+def get_ring_type(spher_type) -> str:
     """ Function for input from user number of ring """
 
     print("  Введите номер кольца:")
     print("  Номер обозначен на кольце")
-    ring_type = input("  1 --- 7\n  ")
-    while ring_type not in ["1", "2", "3", "4", "5", "6", "7"]:
-        print("  Введите правильный номер кольца")
+    if spher_type == "1":
+        print("  Доступные кольца для малого сферометра:")
+        print("  1, 2, 3, 4, 5, 7")
+        print(" Если хотите посмотреть список колец, нажмите L")
+        if input().lower() == "l":
+            pprint(SPHEROMETR['SMALL'])
         ring_type = input("  1 --- 7\n  ")
+        while ring_type not in ["1", "2", "3", "4", "5", "7"]:
+            print("  Введите правильный номер кольца")
+            ring_type = input("  1 --- 7\n  ")
     return ring_type

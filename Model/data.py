@@ -1,5 +1,8 @@
 """ Данные для сферометров """
 
+from pprint import pprint
+
+
 SPHEROMETR = {
     "BIG": {
         "RING_1": {"radius": 45.0473, "ball": 3.158},
@@ -16,3 +19,6 @@ SPHEROMETR = {
         "RING_7": {"radius": 7.477, "ball": 1.17},
     }
 }
+
+if __name__ == "__main__":
+    pprint(SPHEROMETR)

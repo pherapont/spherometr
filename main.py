@@ -19,7 +19,7 @@ print_header()
 calculation_type = get_calculations_type()
 surface_type = get_surface_type()
 spher_type = get_spher_type()
-ring_type = get_ring_type()
+ring_type = get_ring_type(spher_type)
 
 kind = SPHER_TYPE[spher_type]
 ring = RING_TYPE[ring_type]
@@ -28,7 +28,7 @@ if calculation_type == "1":
     surface_param = get_surface_radius()
     while check_ring(SPHEROMETR[kind][ring]["radius"], surface_param):
         radius_warning(kind, ring)
-        ring_type = get_ring_type()
+        ring_type = get_ring_type(spher_type)
         ring = RING_TYPE[ring_type]
 elif calculation_type == "2":
     surface_param = get_surface_height()

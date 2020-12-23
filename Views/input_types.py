@@ -40,23 +40,32 @@ def get_spher_type() -> str:
         spher_type = input("  1 --- 2\n  ")
     return spher_type
 
-def get_ring_type(spher_type) -> str:
+
+def get_ring_type(spher_type: str) -> str:
     """ Function for input from user number of ring """
 
     print("  Введите номер кольца:")
     print("  Номер обозначен на кольце")
-    if spher_type == "1":
-        print("  Доступные кольца для малого сферометра:")
-        rings_list = [item[-1] for item in SPHEROMETR['SMALL'].keys()]
-        print("  {}".format(", ".join(rings_list)))
-        print("  Если хотите посмотреть параметры колец, нажмите L")
-        print("  Иначе, нажмите любую клавишу.")
-        if input("  ").lower() == "l":
-            pprint(SPHEROMETR['SMALL'])
-        ring_type = input("  Введите номер кольца:\n  ").strip()
-        print (rings_list)
-        print (ring_type, type(ring_type))
-        while ring_type not in [rings_list]:
-            print("  Введите правильный номер кольца")
-            ring_type = input("  1 --- 7\n  ")
+    rings_response = "  Доступные кольца для {} сферометра:".format(
+                "малого" if spher_type == "1" else "большого")
+    print(rings_response)
+    spherometr = (SPHEROMETR['SMALL'] if spher_type == "1"
+                    else SPHEROMETR['BIG'])
+    rings_list = [item[-1] for item in spherometr.keys()]
+    print("  {}".format(", ".join(rings_list)))
+    print("  Если хотите посмотреть параметры колец, нажмите L")
+    print("  Иначе, нажмите любую клавишу.")
+    user_input = input("  ").lower()
+    if user_input == "l":
+        pprint(spherometr)
+    elif user_input in rings_list:
+        return user_input
+    print("  Введите номер кольца:  ")
+    user_input = input("  1 --- 7\n  ")
+    if user_input in rings_list:
+        return user_input
+    while user_input not in rings_list:
+        print("  Введите правильный номер кольца")
+        user_input = input("  1 --- 7\n  ")
+        ring_type = user_input
     return ring_type

@@ -39,7 +39,7 @@ check_response(calculation_type,
 if calculation_type == "1":
     if surface_type == "1":
         res = concave_height(surface_param, kind, ring)
-    elif surface_type == "8":
+    elif surface_type == "2":
         res = convex_height(surface_param, kind, ring)
 elif calculation_type == "2":
     if surface_type == "1":

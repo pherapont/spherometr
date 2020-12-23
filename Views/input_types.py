@@ -47,12 +47,16 @@ def get_ring_type(spher_type) -> str:
     print("  Номер обозначен на кольце")
     if spher_type == "1":
         print("  Доступные кольца для малого сферометра:")
-        print("  1, 2, 3, 4, 5, 7")
-        print(" Если хотите посмотреть список колец, нажмите L")
-        if input().lower() == "l":
+        rings_list = [item[-1] for item in SPHEROMETR['SMALL'].keys()]
+        print("  {}".format(", ".join(rings_list)))
+        print("  Если хотите посмотреть параметры колец, нажмите L")
+        print("  Иначе, нажмите любую клавишу.")
+        if input("  ").lower() == "l":
             pprint(SPHEROMETR['SMALL'])
-        ring_type = input("  1 --- 7\n  ")
-        while ring_type not in ["1", "2", "3", "4", "5", "7"]:
+        ring_type = input("  Введите номер кольца:\n  ").strip()
+        print (rings_list)
+        print (ring_type, type(ring_type))
+        while ring_type not in [rings_list]:
             print("  Введите правильный номер кольца")
             ring_type = input("  1 --- 7\n  ")
     return ring_type

@@ -5,10 +5,11 @@ def get_surface_radius() -> float:
     print("  Пример: 1.001")
     radius = input("  ")
     try:
-        radius = float(radius)
+        res = float(radius)
     except:
         print("  Введите правильные данные")
-    return radius
+        return get_surface_radius()
+    return res
 
 
 def get_surface_height() -> float:
@@ -24,4 +25,5 @@ def get_surface_height() -> float:
         height = float(height)
     except:
         print("  Введите правильные данные")
+        return get_surface_height()
     return height

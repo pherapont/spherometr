@@ -1,5 +1,8 @@
 """ Matching user data with API """
 
+RADIUS = "2"
+HEIGHT = "1"
+
 SPHER_TYPE = {
     "1": "SMALL",
     "2": "BIG"
